@@ -20,7 +20,7 @@ if(props.open) {
                 </div>    
                 <nav>
 
-                    <NavigationItems />
+                    <NavigationItems isAuthenticated = {props.isAuth} />
                 </nav>
 
             </div>

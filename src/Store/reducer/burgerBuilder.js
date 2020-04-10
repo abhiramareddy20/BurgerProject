@@ -5,7 +5,8 @@ import {updateObject} from '../utility';
 const initialState = {
     ingredients : null,
         totalprice: 4,
-        error: false
+        error: false,
+        building: false
 };
 
 const addIngredient =(state, action) => {
@@ -13,7 +14,8 @@ const addIngredient =(state, action) => {
           const UpdatedIngredients = updateObject(state.ingredients, UpdatedIngredient);
             const UpdatedState = {
                 ingredients: UpdatedIngredients,
-                totalprice: state.totalprice + INGREDIENT_PRICES[action.ingredientName]
+                totalprice: state.totalprice + INGREDIENT_PRICES[action.ingredientName],
+                building: true
             }
       
           return updateObject(state,UpdatedState);
@@ -24,7 +26,8 @@ const removeIngredient = ( state, action) => {
     const UpdatedIngs = updateObject(state.ingredients, UpdatedIng);
       const UpdatedSt = {
           ingredients: UpdatedIngs,
-          totalprice: state.totalprice + INGREDIENT_PRICES[action.ingredientName]
+          totalprice: state.totalprice + INGREDIENT_PRICES[action.ingredientName],
+          building: true
       }
 
     return updateObject(state,UpdatedSt);
@@ -39,7 +42,8 @@ const setIngredients = (state, action) =>{
             meat: action.ingredients.meat
         },
         totalprice: 4,
-        error: false
+        error: false,
+        building: false
     });
 
 };
@@ -54,7 +58,7 @@ const INGREDIENT_PRICES = {
 const fetchIngredientsFailed = (state, action) => {
     return updateObject(state,{error: true});
     
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
